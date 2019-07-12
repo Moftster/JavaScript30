@@ -68,6 +68,10 @@
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
+    .hour-hand{
+      /* width: 30%;       */
+    }
+
   </style>
 
 <script>
@@ -75,6 +79,8 @@
 const secondHand = document.querySelector('.second-hand');
 
 const minuteHand = document.querySelector('.min-hand');
+
+const hourHand = document.querySelector('.hour-hand');
 
 function setDate() {
 
@@ -88,9 +94,17 @@ function setDate() {
 
   const minutes = now.getMinutes();
 
-  const minutesDegrees = ((minutes / 60) + 90) * 360;
+  const minutesDegrees = ((minutes / 60) * 360) + 90;
 
   minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+  const hours = now.getHours();
+
+  const hoursDegrees = (hours * 360 / 12) + 90;
+
+  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  console.log(hours);
 
 }
 
