@@ -98,15 +98,17 @@
 
         const nextGuy = b.passed - b.year;
 
-        if(lastGuy > nextGuy) {
+        return lastGuy > nextGuy ? -1 : 1; //ternary operator
 
-          return -1;
-
-        } else {
-
-          return 1;
-
-        }
+        // if(lastGuy > nextGuy) { // longer form
+        //
+        //   return -1;
+        //
+        // } else {
+        //
+        //   return 1;
+        //
+        // }
 
     });
 
