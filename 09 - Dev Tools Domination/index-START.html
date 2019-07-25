@@ -19,27 +19,86 @@
 
     // Regular
 
+    console.log('hello');
+
     // Interpolated
+
+    console.log('I am a %s string', '💩');
 
     // Styled
 
+    console.log('%cI am a winner!', 'font-size: 52px; background: red;');
+
     // warning!
+
+    console.warn("Oh noooo!");
 
     // Error :|
 
+    console.error("Oh noooo!");
+
     // Info
+    console.info('1 in 10 people are ginger');
+
 
     // Testing
 
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('ouch'), "Doesn't contain ouch");
+
+    // console.assert(1 === 2, "You've made a mistake");
+
     // clearing
+
+    // console.clear();
 
     // Viewing DOM Elements
 
+    console.log(p);
+    console.dir(p);
+
+    console.clear();
+
     // Grouping together
 
+    dogs.forEach(dog =>{
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`${dog.name} is the dog's name`);
+      console.log(`${dog.age} is ${dog.name}'s age`);
+      console.log(`${dog.name} is ${dog.age * 7} years old in human years`);
+      console.groupEnd(`${dog.name}`);
+
+    })
+
     // counting
+    console.count('Dave');
+    console.count('Dave');
+    console.count('John');
+    console.count('Dave');
+    console.count('Dave');
+    console.count('Dave');
+    console.count('Dave');
+    console.count('John');
+    console.count('John');
+    console.count('John');
+    console.count('John');
+    console.count('John');
+    console.count('Dave');
+    console.count('Dave');
+    console.count('Dave');
+    console.count('Dave');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/moftster')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+      console.table(dogs);
 
   </script>
 </body>
