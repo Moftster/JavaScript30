@@ -96,6 +96,78 @@
   </div>
 
 <script>
+
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]'); // create block scope variable that selects all checkboxes within the inbox class
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck)); // Listen for clicks the individual checkboxes and run handleCheck function
+
+let lastChecked;
+
+function handleCheck(e) {
+
+  let inBetween = false;
+
+  // Check if shift key if held down
+  // AND check that they are checking it (as opposed to unchecking)
+  if(e.shiftKey && this.checked) {
+    // Loop over checkboxes
+    checkboxes.forEach(checkbox => {
+      console.log(checkbox);
+      if(checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log("Checking inbetween");
+      }
+
+      if(inBetween) {
+        checkbox.checked = true; // check the checkboxes identified as inbetween
+      }
+    });
+
+  }
+
+  lastChecked = this;
+
+}
+
+console.log(checkboxes);
+
+// SOLUTION ONLINE (WORKS)
+// const boxes = Array.from(document.querySelectorAll('.inbox .item [type="checkbox"]')); // create an array from all items in list
+//
+// let lastChecked;
+//
+// function changeBox(event) { //  if you hold shift and click between boxes it tracks the box you clicked and the previous one
+//   if(event.shiftKey && this != lastChecked) {
+//     checkIntermediateBoxes(lastChecked, this);
+//     }
+//
+//   lastChecked = this;
+//
+// }
+//
+// boxes.forEach(item => item.addEventListener('click', changeBox)); // Add an event listener for each of the new boxes array on click
+//
+// function checkIntermediateBoxes(first, second) { // create function to identify intermediate boxes
+//   if (boxes.indexOf(first) > boxes.indexOf(second)) {
+//     [second, first] = [first,second];
+//   }
+//
+//   intermediateBoxes(first,second).forEach(box => box.checked = true); // call funtion to check intermediate boxes
+//
+// }
+//
+// function intermediateBoxes(start,end) { // create function to check intermediate boxes
+//   return boxes.filter((item, key) => {
+//     return boxes.indexOf(start) < key && key < boxes.indexOf(end);
+//   });
+// }
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
